@@ -8,7 +8,8 @@
  <h3>My Todo</h3>
  <form action="/todos/add" method="POST">
    {% csrf_token %}
-   <input name="text" placeholder="Input here...">
+   <p><input name="text" placeholder="Input here..."></p>
+   <p><input name="deadline" type="date" ></p>
    <button type="submit">ADD</button>
  </form>
 
@@ -17,6 +18,7 @@
    {% for todo in todos %}
    <li>
      {{ todo.text }}
+     {{ todo.deadline }}
      <form action="/todos/delete/{{ todo.id }}"
            style="display: inline;" 
            method="POST">
