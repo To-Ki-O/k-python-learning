@@ -6,7 +6,7 @@ def index(request):
    return render(request, 'index.html', {'todos': todos})
 
 def addTodo(request):
-   todo = Todo(text=request.POST['text'])
+   todo = Todo(text=request.POST['text'], deadline=request.POST['deadline'])
    todo.save()
    return redirect('/todos')
 
