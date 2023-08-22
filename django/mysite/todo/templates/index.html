@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>My Todo</title>
+</head>
+<body>
+ <h3>My Todo</h3>
+ <form action="/todos/add" method="POST">
+   {% csrf_token %}
+   <input name="text" placeholder="Input here...">
+   <button type="submit">ADD</button>
+ </form>
+
+ <h5>Todo List</h5>
+ <ul>
+   {% for todo in todos %}
+   <li>
+     {{ todo.text }}
+     <form action="/todos/delete/{{ todo.id }}"
+           style="display: inline;" 
+           method="POST">
+       {% csrf_token %}
+       <button type="submit">DEL</button>
+     </form>
+   </li>
+   {% endfor %}
+ </ul>
+</body>
+</html>
